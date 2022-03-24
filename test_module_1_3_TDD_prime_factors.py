@@ -15,7 +15,7 @@ class TestPrimeFactor(unittest.TestCase):
             assert False, err
 
     def test_prime_factor_number_is_int(self):
-        with self.assertRaises(ValueError) as exc:
+        with self.assertRaises(ValueError):
             prime_factors(number='test')
 
         with self.assertRaises(ValueError):
