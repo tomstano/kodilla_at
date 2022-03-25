@@ -1,7 +1,7 @@
 """Module 1.3 - Zadanie: faktoryzacja / UT"""
 
 import unittest
-from module_1_3_TDD_prime_factors import prime_factors
+from kodilla.module_1.module_1_3_TDD_prime_factors import prime_factors
 
 
 class TestPrimeFactor(unittest.TestCase):
@@ -9,7 +9,7 @@ class TestPrimeFactor(unittest.TestCase):
 
     def test_import_prime_factors(self):
         try:
-            from module_1_3_TDD_prime_factors import prime_factors
+            from kodilla.module_1.module_1_3_TDD_prime_factors import prime_factors
             assert callable(prime_factors), "prime_factors not callable"
         except ImportError as err:
             assert False, err
