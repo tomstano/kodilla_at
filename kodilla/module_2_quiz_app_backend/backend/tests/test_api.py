@@ -1,5 +1,6 @@
 import json
 import pytest
+
 from unittest.mock import patch
 from kodilla.module_2_quiz_app_backend.backend.flaskr.models import Category, Question
 
