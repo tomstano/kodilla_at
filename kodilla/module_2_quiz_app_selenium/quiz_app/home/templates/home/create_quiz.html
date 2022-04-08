@@ -1,0 +1,78 @@
+{% extends "home/base.html" %}
+{% block script %}
+<script type="text/javascript">
+function trigger(response) {
+
+if (response == 2){
+            document.getElementById("qtype_1").style.visibility="hidden";
+            document.getElementById("qtype_2").style.visibility="visible";
+  }
+else if (response == 1){
+    document.getElementById("qtype_1").style.visibility="visible";
+    document.getElementById("qtype_2").style.visibility="hidden";
+}
+else{
+document.getElementById("qtype_1").style.visibility="hidden";
+document.getElementById("qtype_2").style.visibility="hidden";
+}
+}
+
+</script>
+{% endblock script %}
+{% block content %}
+        <article class="media content-section">
+            <div class="content">
+                <form method="POST">
+                    {% csrf_token %}
+                    <h2 class="text-center">Submit Trivia Questions </h2>
+                    <div class="form-group">
+                        <textarea name="ques" rows="5" cols="50" wrap="soft" class="form-control" placeholder="Question" required="required"></textarea>
+                    </div>
+                      <div class="form-group">
+                      <p>
+                         <label>Answer Type </label>
+                         <select id = "qtype" name="qtype" onchange="trigger(this.value)" required="required">
+                           <option value = "Default">Select</option>
+                           <option value = "1">True or False</option>
+                           <option value = "2">Multiple Choice</option>
+                           <option value = "3">Essay</option>
+                         </select>
+                      </p>
+                    </div>
+
+                    <div id="qtype_2" style="visibility: hidden;">
+                    <small>Check for Answer</small>
+                    <div class="form-group">
+                         <input type="checkbox" name="ans" value="1"> <input type="text" name="opt1" class="form-control" placeholder="Option 1" >
+                    </div>
+
+                    <div class="form-group">
+                       <input type="checkbox" name="ans" value="2"> <input type="text" name="opt2" class="form-control" placeholder="Option 2">
+                    </div>
+                    <div class="form-group">
+                       <input type="checkbox" name="ans" value="3"> <input type="text" name="opt3" class="form-control" placeholder="Option 3">
+                    </div>
+                    <div class="form-group">
+                       <input type="checkbox" name="ans" value="4"> <input type="text" name="opt4" class="form-control" placeholder="Option 4">
+                    </div>
+
+                    </div>
+
+                    <div id="qtype_1" style="visibility: hidden;">
+                        <div class="form-group">
+                            <label>Answer:</label>
+                            <input type="radio" name="tf_ans" value="true"> True</input>
+                            <input type="radio" name="tf_ans" value="false"> False</input>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block">Done</button>
+                    </div>
+
+
+        </form>
+                </div>
+        </article>
+
+{% endblock content %}

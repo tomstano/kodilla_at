@@ -1,0 +1,25 @@
+{% extends "home/base.html" %}
+{% block content %}
+    {% if Scores %}
+    {% for score in Scores %}
+        <article class="media content-section">
+        <div class="content">
+          <div class="article-metadata">
+            <a class="mr-2" href="#">{{ score.user_name }}</a>
+            <small class="text-muted">{{ score.timestamp }}</small>
+          </div>
+        <h2>&nbsp;<a class="article-title" href="#">{{ score.score }} points</a></h2>
+        </div>
+        </article>
+    {% endfor %}
+    {% else %}
+        <article class="media content-section">
+        <div class="content">
+          <div class="article-metadata">
+            <small class="text-muted">No tests taken</small>
+          </div>
+        <h2>&nbsp;<a class="article-title" href="#">No Attempts</a></h2>
+        </div>
+        </article>
+    {% endif %}
+{% endblock content %}

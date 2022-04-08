@@ -1,0 +1,101 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <title>Welcome Quiz player!</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'home/main.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    {% if title %}
+      <title>{{ title }}</title>
+    {% else %}
+      <title>Django app</title>
+    {% endif %}
+  </head>
+  <body>
+
+    {% block script %}{% endblock script %}
+    <div id="container">
+
+          <nav>
+
+            <div id="logo">
+              {% if 'user' in request.session %}
+                  {% if request.session.type == 'student' %}
+                        <a href="{% url 'student' %}" style="text-decoration:none">Trivia Quiz</a>
+                        </div>
+                        <ul>
+                          <li><a href="{% url 'student' %}" style="text-decoration:none">Home</a></li>
+                            <li><a href="{% url 'start_quiz' %}" style="text-decoration:none">Start Trivia</a></li>
+                          <li><a href="{% url 'user_scores' %}" style="text-decoration:none">View Scores</a></li>
+                  {% else %}
+                        <a href="{% url 'instructor' %}" style="text-decoration:none">Trivia Quiz</a>
+                        </div>
+                        <ul>
+                        <li><a href="{% url 'instructor' %}" style="text-decoration:none">Home</a></li>
+                          <li><a href="{% url 'create_quiz' %}" style="text-decoration:none">Submit Questions</a></li>
+                         <li><a href="{% url 'display_questions' %}" style="text-decoration:none">View Questions</a></li>
+                  {% endif %}
+              {% else %}
+                  <a href="{% url 'Home-home' %}" style="text-decoration:none">Trivia Quiz</a>
+                  </div>
+                  <ul>
+                  <li><a href="{% url 'Home-home' %}" style="text-decoration:none">Home</a></li>
+              {% endif %}
+
+              <li><a href="{% url 'Home-about' %}" style="text-decoration:none">About</a></li>
+              {% if request.session.user %}
+                <li><a href="{% url 'logout' %}"  style="text-decoration:none">Logout</a></li>
+                <li><a href="{% url 'profile' %}" style="text-decoration:none">Profile</a></li>
+              {% else %}
+                <li><a href="{% url 'register' %}" style="text-decoration:none">Register</a></li>
+                <li><a href="{% url 'login' %}" style="text-decoration:none">Login</a></li>
+              {% endif %}
+            </ul>
+          </nav>
+        </div>
+
+
+    <main role="main" class="container">
+      <div class="row">
+        <div class="col-md-8">
+          {% if messages %}
+            {% for message in messages %}
+              <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+              </div>
+            {% endfor %}
+          {% endif %}
+          {% block content %}{% endblock content%}
+        </div>
+        <div class="col-md-4">
+          <div class="content-section">
+            <h3>Navigate</h3>
+            <p class='text-muted'>Welcome to Trivia Quiz.
+              <ul class="list-group">
+                <li class="list-group-item list-group-item-light">Login as Instructor to Submit Questions</li>
+                <li class="list-group-item list-group-item-light">Students click Start Trivia</li>
+                <li class="list-group-item list-group-item-light">Profile Points get updated hourly</li>
+                <li class="list-group-item list-group-item-light">© Tomek Stano</li>
+              </ul>
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+      <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

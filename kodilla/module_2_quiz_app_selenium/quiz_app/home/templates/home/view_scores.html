@@ -1,0 +1,15 @@
+{% extends "home/base.html" %}
+{% block content %}
+
+    {% for score in Scores %}
+        <article class="media content-section">
+        <div class="content">
+          <div class="article-metadata">
+            <a class="mr-2" href="#">{{ score.user_name }}</a>
+            <small class="text-muted">{{ score.timestamp }}</small>
+          </div>
+        <h2>&nbsp;<a class="article-title" href="#">{{ score.score }} points</a></h2>
+        </div>
+        </article>
+    {% endfor %}
+{% endblock content %}

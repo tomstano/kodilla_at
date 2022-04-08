@@ -1,0 +1,13 @@
+{% extends "home/base.html" %}
+{% block content %}
+
+        <article class="media content-section">
+            <div class="content">
+                <h2>Welcome Instructor !</h2><br>
+                <a href="{% url 'create_quiz' %}" class="btn btn-primary" role="button">Submit Trivia Questions</a>
+                <a href="{% url 'display_questions' %}" class="btn btn-warning" role="button">View Submitted Questions</a>
+                <a href="{% url 'view_scores' %}" class="btn btn-info" role="button">View Scores</a>
+                </div>
+        </article>
+
+{% endblock content %}

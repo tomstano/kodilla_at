@@ -1,0 +1,22 @@
+{% extends "home/base.html" %}
+{% block content %}
+<form method="POST">
+    {% csrf_token 	%}
+    <input type="submit" class="btn btn-danger" value="Delete questions"><br><br>
+    {% for question in Questions %}
+        <article class="media content-section">
+        <div class="content">
+          <div class="article-metadata">
+            <a class="mr-2" href="#">{{ question.author }}</a>
+            <small class="text-muted">{{ question.weightage }} points</small>
+          </div>
+        <h2><input type="checkbox" name="sel" style="width:20px;height:20px;" value="{{question.question}}">
+            &nbsp;<a class="article-title" href="#">{{ question.question }}</a></h2>
+            <p class="article-content">Answer: {{ question.ans }}</p>
+
+        </div>
+        </article>
+    {% endfor %}
+</form>
+
+{% endblock content %}

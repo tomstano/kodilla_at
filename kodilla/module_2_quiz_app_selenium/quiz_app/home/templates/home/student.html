@@ -1,0 +1,13 @@
+{% extends "home/base.html" %}
+{% block content %}
+        <article class="media content-section">
+            <div class="content">
+                <h2>Welcome {{ request.session.user }} !</h2><br>
+                <a href="{% url 'start_quiz' %}" class="btn btn-primary" role="button">Start Trivia</a>
+                <a href="{% url 'user_scores' %}" class="btn btn-warning" role="button">View Scores</a><br><br>
+                <small class="text-muted">True or False - 10 points</small><br>
+                <small class="text-muted">Multiple Choice - 20 points</small><br>
+                <small class="text-muted">Essay - 30 points</small><br>
+                </div>
+        </article>
+{% endblock content %}

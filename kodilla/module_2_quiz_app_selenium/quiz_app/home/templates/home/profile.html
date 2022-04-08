@@ -1,0 +1,18 @@
+{% extends "home/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+          <div class="content-section">
+            <div class="media">
+              <img class="rounded-circle account-img" src="/media/profile_pics/download.png">
+              <div class="media-body">
+                <h2 class="account-heading">{{ request.session.user }}</h2>
+                <p class="text-secondary">{{ request.session.email }}</p>
+                  <p class="text-secondary">{{ request.session.type }}</p>
+                  <p class="text-secondary">{{ request.session.points }} points</p>
+              </div>
+            </div>
+            <!-- FORM HERE -->
+          </div>
+
+</article>
+{% endblock content %}

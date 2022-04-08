@@ -1,0 +1,46 @@
+{% extends "home/base.html" %}
+{% block content %}
+<form method="POST">
+    {% csrf_token 	%}
+
+    {% for question in Questions %}
+        {% if question.question_type == "1" %}
+                <article class="media content-section">
+                <div class="content">
+                  <div class="article-metadata">
+                    <small class="text-muted">{{ question.weightage }} points</small>
+                  </div>
+                <h5>&nbsp;<a class="article-title" href="#">{{ question.question }}</a></h5><br>
+                    <input type="radio" name="{{ forloop.counter }}" value="true" style="width:20px;height:20px;" required="required">&nbsp;&nbsp;True <br><br>
+                    <input type="radio" name="{{ forloop.counter }}" value="false" style="width:20px;height:20px;" required="required">&nbsp;&nbsp; False <br>
+                </div>
+                </article>
+        {% elif question.question_type == "2" %}
+                <article class="media content-section">
+                <div class="content">
+                  <div class="article-metadata">
+                    <small class="text-muted">{{ question.weightage }} points</small>
+                  </div>
+                <h5>&nbsp;<a class="article-title" href="#">{{ question.question }}</a></h5><br>
+                    <input type="radio" name="{{ forloop.counter }}" value="{{ question.op1 }}" style="width:20px;height:20px;" required="required">&nbsp;&nbsp;{{ question.op1 }}<br><br>
+                    <input type="radio" name="{{ forloop.counter }}" value="{{ question.op2 }}" style="width:20px;height:20px;" required="required">&nbsp;&nbsp;{{ question.op2 }}<br><br>
+                    <input type="radio" name="{{ forloop.counter }}" value="{{ question.op3 }}" style="width:20px;height:20px;" required="required">&nbsp;&nbsp;{{ question.op3 }}<br><br>
+                    <input type="radio" name="{{ forloop.counter }}" value="{{ question.op4 }}" style="width:20px;height:20px;" required="required">&nbsp;&nbsp;{{ question.op4 }}<br>
+                </div>
+                </article>
+        {% else %}
+                <article class="media content-section">
+                <div class="content">
+                  <div class="article-metadata">
+                    <small class="text-muted">{{ question.weightage }} points</small>
+                  </div>
+                <h2>&nbsp;<a class="article-title" href="#">{{ question.question }}</a></h2>
+                    <textarea name="{{ forloop.counter }}" rows="3" cols="30" wrap="soft" class="form-control" placeholder="Type Here...." required="required"></textarea>
+                </div>
+                </article>
+        {% endif %}
+
+    {% endfor %}
+    <input type="submit" class="btn btn-danger" value="Submit Questions"><br><br>
+</form>
+{% endblock content %}
