@@ -3,3 +3,5 @@ django-crispy-forms
 pillow
 pytest
 selenium
+tox
+pyvirtualdisplay

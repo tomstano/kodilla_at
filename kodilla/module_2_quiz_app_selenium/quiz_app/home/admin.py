@@ -1,5 +1,6 @@
 from django.contrib import admin
-from . models import ExtendedUser, Profile, Questions, Scores
+
+from .models import ExtendedUser, Profile, Questions, Scores
 
 # Register your models here.
 admin.site.register(ExtendedUser)
