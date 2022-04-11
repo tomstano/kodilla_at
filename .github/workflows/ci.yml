@@ -36,15 +36,15 @@ jobs:
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
 
-    - name: Run isort check
+    - name: Run isort checker
       run: |
         tox -e isort_check
 
-    - name: Run black check
+    - name: Run black checker
       run: |
         tox -e black_check
 
-    - name: Run mypy check
+    - name: Run mypy checker
       run: |
         tox -e mypy
     
