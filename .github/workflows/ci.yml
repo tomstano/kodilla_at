@@ -49,6 +49,6 @@ jobs:
       run: |
         tox -e mypy
     
-    - name: Run selenium functional tests
+    - name: Run pytest / selenium
       run: |
         tox -e selenium_tests
