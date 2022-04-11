@@ -5,3 +5,5 @@ pytest
 selenium
 tox
 pyvirtualdisplay
+isort
+black
