@@ -1,6 +1,7 @@
 """Module 1.3 - Zadanie: faktoryzacja / UT"""
 
 import unittest
+
 from kodilla.module_1.module_1_3_TDD_prime_factors import prime_factors
 
 
@@ -10,20 +11,21 @@ class TestPrimeFactor(unittest.TestCase):
     def test_import_prime_factors(self):
         try:
             from kodilla.module_1.module_1_3_TDD_prime_factors import prime_factors
+
             assert callable(prime_factors), "prime_factors not callable"
         except ImportError as err:
             assert False, err
 
     def test_prime_factor_number_is_int(self):
         with self.assertRaises(ValueError):
-            prime_factors(number='test')
+            prime_factors(number="test")
 
         with self.assertRaises(ValueError):
             prime_factors(number=0.1)
 
     def test_prime_factor_value_err_msg(self):
         try:
-            prime_factors(number='test')
+            prime_factors(number="test")
         except Exception as exc:
             self.assertEqual(str(exc), "number must be int!")
 
@@ -42,5 +44,5 @@ class TestPrimeFactor(unittest.TestCase):
         self.assertEqual(prime_factors(17), [17])
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
