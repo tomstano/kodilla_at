@@ -4,6 +4,7 @@ django-crispy-forms
 pillow
 selenium
 tox
+tox-gh-actions
 pyvirtualdisplay
 isort
 black
